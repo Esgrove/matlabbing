@@ -1,5 +1,5 @@
 # matlabbing
-**Various MATLAB scripts I have created over the years.**               
+####Various MATLAB scripts I have created over the years:                   
 
 
 
@@ -17,4 +17,14 @@ Investigating and understanding how the [Serato DJ / Scractch Live](https://sera
 
 I implemented the classic example of [Monte Carlo integration](https://en.wikipedia.org/wiki/Monte_Carlo_integration) for approximating the value of pi for myself when studying Monte Carlo methods.       
 
- 
+
+### True-peak Limiting (true_peak.m)
+
+Investigating digital audio sampling and [true-peaks](https://techblog.izotope.com/2015/08/24/true-peak-detection/) (_inter-sample distortion_), especially how excessively most tracks tend to exceed 0 dBTP in actuality though they are seemingly staying at or below 0 dBFS.
+
+
+### Dithering (dither.m)
+
+Investigating dithering in practice, utilizing sound samples (sine waves) processed (dithered) with the iZotope Ozone 7 Maximizer plugin. Most audio people quote the common "-96 dB for 16-bit audio" and the "6 dB per bit" rule when talking about the dynamic range of digital audio, but these simplifications are not the actual truth, which a lot of people don't seem to understand. It is quite possible have a -120 dB or even quieter audio component in a 16-bit audio file even though noise floor is understood to be at -96 dB. In practice, the effective dynamic range of 16-bit audio is closer to 120 dB through the help of noiseshaping, which is demostrated in this script.                
+
+
