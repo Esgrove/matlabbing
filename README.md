@@ -29,4 +29,7 @@ Investigating dithering in practice, utilizing sound samples (sine waves) dither
 
 #### Pixel filtering (pixel_filter.m)
 
-Simple script for checking out the shape of common filtering kernels for images (in this case, a gaussian and the Mitchell-Netravali filter) depending on the parameters and implemention style. Done while implementing antialiasing filters to my own 3D-rendering programs.      
+Simple script for checking out the shape of common filtering kernels for images (in this case, a gaussian and the Mitchell-Netravali filter) depending on the parameters and implemention style. Done while implementing antialiasing filters to my own 3D-rendering programs.
+
+
+##### I also did a lot of MATLAB for my Master's and Bachelor's theses, which can be found in their respective repos...      
