@@ -1,6 +1,5 @@
 # matlabbing
-### Various MATLAB scripts I have created over the years:
-##### (I also did a lot of MATLAB for my Master's and Bachelor's theses, which can be found in their respective repos...)                  
+### Various MATLAB scripts I have created over the years:             
 
 #### Audio "blur" (audioblur.m)
 
@@ -35,3 +34,6 @@ Checking how [Sobol sequence](https://en.wikipedia.org/wiki/Sobol_sequence) samp
 #### True-peak Limiting (true_peak.m)
 
 Investigating digital audio sampling and [true-peaks](https://techblog.izotope.com/2015/08/24/true-peak-detection/) (_inter-sample distortion_), especially how excessively most tracks tend to exceed 0 dBTP in actuality though they are seemingly staying at or below 0 dBFS. When these tracks are converted from the digital samples to continuous-time waveforms (i.e., analog signals), over 0 dBTP peaks can and will result in distortion. This is why all audio should be mastered with true-peak limiting, which is sadly not the case with many commercial audio releases even today. A great scientific paper explaining this topic is [Stop Counting Samples](http://www.aes.org/e-lib/browse.cfm?elib=13806) by Thomas Lund.
+
+
+##### (I also did a lot of MATLAB for my Master's and Bachelor's theses, which can be found in their respective repos...)     
