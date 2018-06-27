@@ -1,7 +1,8 @@
 # matlabbing
 ### Various MATLAB scripts I have created over the years:
 
-See the folders *figures* and *audio* for images and audio samples ;)          
+![alt text](https://github.com/Esgrove/matlabbing/blob/master/figures/dither_16bit_1kHz_105db_spectrogram_3D.png)
+See the folders *figures* and *audio* for images and audio samples ;)   
 
 #### Audio "blur" (audioblur.m)
 
