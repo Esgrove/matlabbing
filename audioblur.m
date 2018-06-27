@@ -3,7 +3,7 @@
 %  2018
 
 % figure positioning
-screen = get(0,'screensize'); figx = 1024; figy = 800; clc; close all;
+screen = get(0,'screensize'); figx = 1200; figy = 600; clc; close all;
 
 %% Audio sample
 
@@ -15,7 +15,7 @@ audio1  = audioinfo("This Is A Journey Into Sound.aif") % print info
 % use only one channel and normalize
 x_n = 0.99.*(x(:,1)./max(abs(min(x(:,1))),max(x(:,1)))); x_n = x_n';
 
-audiowrite('audioblur_in1.wav',x_n,Fs);
+audiowrite('./audio/audioblur_in1.wav',x_n,Fs);
 
 %% Blur
 
@@ -44,7 +44,8 @@ for l = 1:length(L)
     blur = 0.99.*(blur./max(abs(min(blur)),max(blur))); % normalize
     
     % export audio
-    audiowrite(strcat('audioblur_in1_',num2str(L(l)),'.wav'),blur,Fs);
+    audiowrite(strcat('./audio/audioblur_in1_blurred_',...
+        num2str(L(l)),'.wav'),blur,Fs);
 
     % Plot
     x = [zeros(1,round(n/2)) x_n]; % pad input by n/2
@@ -65,7 +66,7 @@ for l = 1:length(L)
     text = [' blur length ', num2str(L(l)), ' s'];
     title(strcat('Blurred audio,',text));
     numstr = strrep(num2str(L(l)),'.',''); % remove dots from number
-    print(gcf,strcat('audioblur_in1_',numstr), '-dpng', '-r300');
+    print(gcf,strcat('./figures/audioblur_in1_',numstr), '-dpng', '-r300');
     close all;
     fprintf('L = %g done!\n',L(l)); 
 end
@@ -80,7 +81,7 @@ audio2 = audioinfo("cafe.wav")
 % use only one channel and normalize
 x_n = 0.99.*(x(:,1)./max(abs(min(x(:,1))),max(x(:,1)))); x_n = x_n';
 
-audiowrite('audioblur_in2.wav',x_n,Fs);
+audiowrite('./audio/audioblur_in2.wav',x_n,Fs);
 
 %% Blur 2
 
@@ -109,7 +110,8 @@ for l = 1:length(L)
     blur = 0.99.*(blur./max(abs(min(blur)),max(blur))); % normalize
     
     % export audio
-    audiowrite(strcat('audioblur_in2_',num2str(L(l)),'.wav'),blur,Fs);
+    audiowrite(strcat('./audio/audioblur_in2_blurred_',...
+                num2str(L(l)),'.wav'),blur,Fs);
 
     % Plot
     x = [zeros(1,round(n/2)) x_n]; % pad input by n/2
@@ -130,7 +132,7 @@ for l = 1:length(L)
     text = [' blur length ', num2str(L(l)), ' s'];
     title(strcat('Blurred audio,',text));
     numstr = strrep(num2str(L(l)),'.',''); % remove dots from number
-    print(gcf,strcat('audioblur_in2_',numstr), '-dpng', '-r300');
+    print(gcf,strcat('./figures/audioblur_in2_',numstr), '-dpng', '-r300');
     close all;
     fprintf('L = %g done!\n',L(l)); 
 end

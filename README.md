@@ -1,5 +1,7 @@
 # matlabbing
-### Various MATLAB scripts I have created over the years:             
+### Various MATLAB scripts I have created over the years:
+
+See the folders *figures* and *audio* for images and audio samples ;)          
 
 #### Audio "blur" (audioblur.m)
 
@@ -8,7 +10,12 @@ When blurring an image, for example in the case of the typical gaussian blur, ea
 
 #### Dithering (dither.m)
 
-Investigating dithering in practice, utilizing sound samples (sine waves) dithered with the [iZotope Ozone 7 Maximizer plugin](https://www.izotope.com/). Most audio people quote the common "_-96 dB for 16-bit audio_" and the "_6 dB per bit_" rule when talking about the [dynamic range of digital audio](https://en.wikipedia.org/wiki/Dynamic_range#Audio), but these simplifications are not the actual truth, which a lot of people don't seem to be aware of. It is quite possible have an audible -120 dB peak or even quieter frequency component in a 16-bit audio file even though noise floor is understood to be at -96 dB. In practice, the effective dynamic range of 16-bit audio is much higher (typically around 120 dB) with the help of noiseshaping, which is demostrated in this script.
+Investigating dithering in practice, utilizing sound samples (sine waves) dithered with the [iZotope Ozone 7 Maximizer plugin](https://www.izotope.com/). Most audio people quote the common "_-96 dB for 16-bit audio_" and the "_6 dB per bit_" rule when talking about the [dynamic range of digital audio](https://en.wikipedia.org/wiki/Dynamic_range#Audio), but these simplifications are not the actual truth, which a lot of people don't seem to be aware of. It is quite possible have an audible -120 dB peak or even quieter frequency component in a 16-bit audio file even though noise floor is understood to be at -96 dB. In practice, the effective dynamic range of 16-bit audio is much higher with the help of noiseshaping dithering, which is demostrated in this script.
+
+
+#### Fundamental frequency estimation (fundamental_freq.m)
+
+Two simple implementations for extracting the fundamental frequency as a function of time from an audio signal. The first is a linear prediction based approach, which is normally used for analyzing speech. The signal is split into short, overlapping windows (30ms windows with 50% overlap, Hamming windowing function). For each window, the LPC coefficients and residual are calculated. The fundamental frequency for each window is then estimated from the auto-correlation of the LPC residual. As can be seen from the result, this method estimates the fundamental frequency to be much lower than what is visible in the spectrogram of the signal, with the third harmonic of the LPC estimate corresponding to the perceived, ”correct” fundamental frequency. This is not surprising, since the LPC method assumes the signal to a linear combination of an unvoiced source signal and a filter, as per the _source-filter model_ of speech. The second method is a basic windowed FFT with a simple one sample smoothing step.
 
 
 #### Pi value approximation using Monte Carlo integration (montecarlo_pi.m)

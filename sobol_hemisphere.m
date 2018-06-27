@@ -17,8 +17,11 @@ ab = net(p,N); 							% draw #N random samples
 
 % plot sobol values
 figure('Position', [screen(3)/2-400, screen(4)/2-300, 800, 600]);
-scatter(2*ab(:,1)-1, 2*ab(:,2)-1, 'filled'); grid on; 
-axis([-1 1 -1 1]); axis square;
+scatter(2*ab(:,1)-1, 2*ab(:,2)-1, 'filled'); grid on; axis square;
+axis([-1.05 1.05 -1.05 1.05]); 
+xlabel('X'); ylabel('Y'); box on;
+title(sprintf('Sobol samples, N = %d', N));
+print(gcf,'./figures/sobol_hemisphere_samples', '-dpng', '-r300');
 
 %% map to hemisphere
 
@@ -32,7 +35,10 @@ s = cos(0.5.*(pi - fov/180*pi));
 
 figure('Position', [screen(3)/2-600, screen(4)/2-400, 1200, 800]);
 surf(X,Y,Z,'FaceAlpha',0.1, 'LineStyle','--'); grid on; hold on;
-colormap([0.4 0.4 0.4]); axis([-1 1 -1 1 0 1.1]); 
+colormap([0.2 0.4 1.0]); axis([-1 1 -1 1 0 1.1]); 
+xlabel('X'); ylabel('Y'); zlabel('Z'); view(-45,30);
+title({'Sobol samples mapped to hemisphere'; ...
+        sprintf('FOV: %g%c',fov, char(176))});
 for n = 1:N
 	% map to disk:
     % Shirley & Chiu: "A Low Distortion Map Between Disk and Square"
@@ -84,4 +90,5 @@ i = s * i;
 j = s * j;
 k = h * (1-k);
 
-surf(i,j,k,'FaceAlpha',0.3, 'LineStyle','none');
+surf(i,j,k,'FaceAlpha',0.25, 'LineStyle','none');
+print(gcf,'./figures/sobol_hemisphere_cone', '-dpng', '-r300');

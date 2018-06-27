@@ -15,7 +15,8 @@ end
 
 figure('Position', [screen(3)/2-400, screen(4)/2-300, 800, 600]);
 plot(x,y); grid on; axis([-2 2 -0.1 1.1]); set(gca,'YTick',0:0.1:1); 
-title('Mitchell-Netravali 1D');
+title('Mitchell-Netravali 1D'); xlabel('X'); ylabel('Y');
+print(gcf,'./figures/pixel_filter_mn_1d', '-dpng', '-r300');
 
 %% Mitchell-Netravali 2D
 
@@ -37,7 +38,9 @@ end
 % grid mesh
 figure('Position', [screen(3)/2-800, screen(4)/2-300, 800, 600]);
 surf(X,Y,Z); grid on; axis([-2 2 -2 2 -0.1 1.1]); set(gca,'ZTick',0:0.1:1);
-title('Mitchell-Netravali 2D');
+title('Mitchell-Netravali 2D'); xlabel('X'); ylabel('Y'); zlabel('Z');
+view(-45,30);
+print(gcf,'./figures/pixel_filter_mn_2d', '-dpng', '-r300');
 
 %% Mitchell-Netravali 2D shaded
 
@@ -59,12 +62,14 @@ end
 figure('Position', [screen(3)/2, screen(4)/2-300, 800, 600]);
 surf(X,Y,Z,'FaceColor','red','EdgeColor','none'); grid on; 
 axis([-2 2 -2 2 -0.1 1.1]); set(gca,'ZTick', 0:0.1:1);
-title('Mitchell-Netravali 2D');
+title('Mitchell-Netravali 2D'); xlabel('X'); ylabel('Y'); zlabel('Z');
 camlight left; lighting phong; % shading
+view(-45,30);
+print(gcf,'./figures/pixel_filter_mn_2d_shaded', '-dpng', '-r300');
 
 %% Mitchell-Netravali x*y
 
-N = 96;
+N = 64;
 
 t = linspace(-2, 2, N);
 
@@ -80,7 +85,9 @@ end
 % grid mesh
 figure('Position', [screen(3)/2-800, screen(4)/2-300, 800, 600]);
 surf(X,Y,Z); grid on; axis([-2 2 -2 2 -0.1 1.1]); set(gca,'ZTick',0:0.1:1); 
-title('Mitchell-Netravali x*y');
+title('Mitchell-Netravali X*Y'); xlabel('X'); ylabel('Y'); zlabel('Z');
+view(-45,30);
+print(gcf,'./figures/pixel_filter_mn_xy', '-dpng', '-r300');
 
 %% Gauss 1D
 
@@ -92,7 +99,7 @@ y = 1 / (sqrt(2*pi) * sigma) .* exp(-x.^2 / (2 * sigma^2));
 
 figure('Position', [screen(3)/2-400, screen(4)/2-300, 800, 600]);
 plot(x,y); grid on; axis([-2 2 -0.1 1.1]); set(gca,'YTick',0:0.1:1); 
-title('Gauss 1D'); hold on;
+title('Gauss 1D'); hold on; xlabel('X'); ylabel('Y');
 
 s = 0.5:0.1:0.8;
 
@@ -103,6 +110,7 @@ for n = 1:length(s)
 end
 
 legend('0.4','0.5','0.6','0.7','0.8');
+print(gcf,'./figures/pixel_filter_gauss_1d', '-dpng', '-r300');
 
 %% Gauss 2D
 
@@ -118,7 +126,9 @@ Z = 1 / (sqrt(2*pi) * sigma) .* exp(-1* (X.^2 + Y.^2) / (2 * sigma^2));
 
 figure('Position', [screen(3)/2-800, screen(4)/2-300, 800, 600]);
 surf(X,Y,Z); grid on; axis([-2 2 -2 2 -0.1 1.1]); set(gca,'ZTick',0:0.1:1);
-title('Gauss 2D');
+title('Gauss 2D'); xlabel('X'); ylabel('Y'); zlabel('Z');
+view(-45,30);
+print(gcf,'./figures/pixel_filter_gauss_2d', '-dpng', '-r300');
 
 %% Gauss 2D shaded
 
@@ -134,6 +144,9 @@ figure('Position', [screen(3)/2, screen(4)/2-300, 800, 600]);
 surf(X,Y,Z,'FaceColor','red','EdgeColor','none'); grid on;
 axis([-2 2 -2 2 -0.1 1.1]); set(gca,'ZTick',0:0.1:1);
 lighting phong; camlight left; title('Gauss 2D');
+xlabel('X'); ylabel('Y'); zlabel('Z');
+view(-45,30);
+print(gcf,'./figures/pixel_filter_gauss_2d_shaded', '-dpng', '-r300');
 
 %% Gauss x*y
 
@@ -153,7 +166,9 @@ end
 % grid mesh
 figure('Position', [screen(3)/2-800, screen(4)/2-300, 800, 600]);
 surf(X,Y,Z); grid on; axis([-2 2 -2 2 -0.1 1.1]); set(gca,'ZTick',0:0.1:1); 
-title('Gauss x*y');
+title('Gauss X*Y'); xlabel('X'); ylabel('Y'); zlabel('Z');
+view(-45,30);
+print(gcf,'./figures/pixel_filter_gauss_xy', '-dpng', '-r300');
 
 %% Filter functions
 
