@@ -2,7 +2,7 @@
 %  Juri Lukkarila
 %  2017
 
-screen = get(0,'screensize'); figx = 1600; figy = 1000;
+screen = get(0,'screensize'); figx = 1200; figy = 800;
 pos = [screen(3)/2-figx/2, screen(4)/2-figy/2, figx, figy];
 
 %% read audio
@@ -60,7 +60,7 @@ stem(t2,y,'Marker','none');
 stem(t,x,'LineStyle','none'); 
 axis([0.002 0.006 -1.05 1.05]);
 
-%%
+%% Sample 2
 
 [x, Fs] = audioread('Bryson Tiller - Sorry Not Sorry (Esta Remix).aif');
 info    = audioinfo('Bryson Tiller - Sorry Not Sorry (Esta Remix).aif')
@@ -75,8 +75,7 @@ L = max(t);
 figure('Position', pos);
 stem(t,x,'Marker','none'); grid on; axis([-0.02*L 1.02*L -1.05 1.05]);
 
-%% Oversample
-
+% Oversample
 r = 16;
 y = resample(x, r, 1);
 
@@ -87,10 +86,8 @@ t2 = 0:T2:(N2-1)*T2;
 figure('Position', pos);
 plot(t2,y); grid on; axis([0 60 -1.5 1.5]);
 
-%% Plot
-
+% Plot
 over = y > 1 | y < -1;
-
 y_over  = y; y_over(~over) = NaN;
 
 figure('Position', pos); hold on;
@@ -99,7 +96,6 @@ plot(t2(34*r*Fs:38*r*Fs),y(34*r*Fs:38*r*Fs));
 plot(t2(34*r*Fs:38*r*Fs),y_over(34*r*Fs:38*r*Fs),'r');
 grid on;
 
-%%
 figure('Position', [0 0 screen(3) screen(4)]);
 subplot(2,2,1);
 plot(t,x); grid on; axis([10 40 -1.5 1.5]); xlabel('time (s)')
@@ -118,7 +114,8 @@ plot(t2,y_over,'r');
 axis([35.6094 35.6136 -1.5 1.5]); xlabel('time (s)');
 legend('samples', 'waveform', 'over 0 dBFS', 'Location','Best');
 ax = gca; ax.YGrid = 'on';
-title('True-peaks')
+title('True-peaks');
+print(gcf,'./figures/true_peak','-dpng','-r300'); 
 
 %%
 
